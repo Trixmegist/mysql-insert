@@ -1,12 +1,12 @@
 package com.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreatorFactory;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import static java.util.Collections.emptyList;
@@ -16,7 +16,7 @@ import static java.util.Collections.emptyList;
 public class TestService {
   private final JdbcTemplate jdbc;
 
-  @Inject
+  @Autowired
   public TestService(DataSource dataSource) {
     this.jdbc = new JdbcTemplate(dataSource);
   }

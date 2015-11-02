@@ -1,9 +1,8 @@
 package com.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.inject.Inject;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -11,7 +10,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class TestController {
   private final TestService testService;
 
-  @Inject
+  @Autowired
   public TestController(TestService testService) {
     this.testService = testService;
   }

@@ -30,11 +30,11 @@ public class TestApplicationTests {
   @Test
   public void concurrentInserts() throws InterruptedException, ExecutionException {
     RestTemplate rest = new RestTemplate();
-    ExecutorService executor = newFixedThreadPool(100);
+    ExecutorService executor = newFixedThreadPool(8);
 
     allOf(generate(() ->
             runAsync(() ->
-                times(10000, () -> rest.getForObject("http://localhost:8181/insert", Integer.class)), executor))
+                times(1000, () -> rest.getForObject("http://localhost:8181/insert", Integer.class)), executor))
             .limit(8)
             .toArray(CompletableFuture[]::new)
     ).get();
